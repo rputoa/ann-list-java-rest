@@ -1,0 +1,95 @@
+<report skipped="0" listed="100">
+	<args>
+		<type />
+		<name />
+		<search />
+	</args>
+	<item>
+		<id>17124</id>
+		<gid>2166209844</gid>
+		<type>TV</type>
+		<name>Fafner EXODUS</name>
+		<precision>TV 2</precision>
+		<vintage>2015-10</vintage>
+	</item>
+	<item>
+		<id>17123</id>
+		<gid>2793383583</gid>
+		<type>TV</type>
+		<name>Kono Subarashii Sekai ni Shukufuku o!</name>
+		<precision>TV</precision>
+		<vintage>2015</vintage>
+	</item>
+	<item>
+		<id>17122</id>
+		<gid>2575163920</gid>
+		<type>TV</type>
+		<name>Taboo-Tattoo</name>
+		<precision>TV</precision>
+		<vintage>2015</vintage>
+	</item>
+	<item>
+		<id>17121</id>
+		<gid>2304721841</gid>
+		<type>manga</type>
+		<name>Magical Pâtissier Kosaki-chan</name>
+		<precision>manga</precision>
+		<vintage>2014-12-01</vintage>
+	</item>
+	<item>
+		<id>17120</id>
+		<gid>2755160065</gid>
+		<type>manga</type>
+		<name>Hōrōsha</name>
+		<precision>manga</precision>
+		<vintage>2015-06-25</vintage>
+	</item>
+	<item>
+		<id>17119</id>
+		<gid>1174622242</gid>
+		<type>OAV</type>
+		<name>Hayate the Combat Butler!</name>
+		<precision>OAV 2</precision>
+		<vintage>2014-06-16</vintage>
+	</item>
+	<item>
+		<id>17118</id>
+		<gid>1464943989</gid>
+		<type>OAV</type>
+		<name>Queen's Blade: Grimoire</name>
+		<precision>OAV</precision>
+		<vintage>2015-10</vintage>
+	</item>
+	<item>
+		<id>17117</id>
+		<gid>2105119629</gid>
+		<type>manga</type>
+		<name>Crows Gaiden: Katagiri Ken Monogatari</name>
+		<precision>manga</precision>
+		<vintage>2014-05-02</vintage>
+	</item>
+	<item>
+		<id>17116</id>
+		<gid>1485690588</gid>
+		<type>manga</type>
+		<name>Kuzu!!</name>
+		<precision>manga</precision>
+		<vintage>2012-02</vintage>
+	</item>
+	<item>
+		<id>17114</id>
+		<gid>1782213391</gid>
+		<type>manga</type>
+		<name>Crows Zero II: Suzuran x Hōen</name>
+		<precision>manga</precision>
+		<vintage>2012</vintage>
+	</item>
+	<item>
+		<id>17113</id>
+		<gid>2882682727</gid>
+		<type>manga</type>
+		<name>Crows Zero</name>
+		<precision>manga</precision>
+		<vintage>2008-11-13 to 2010</vintage>
+	</item>
+</report>
