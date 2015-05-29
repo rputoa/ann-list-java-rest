@@ -19,19 +19,24 @@ public class AnimeDetailDao {
 	@Cacheable(value = "getAnimeDetail", key = "#id")
 	public AnimeDetail getAnimeDetail(final Long id) {
 		slowQuery(5000L);
-		return annRetriever.retrieveData(getUrlWithParamForAnimeDetail(id),
-				AnimeDetail.class);
+		AnimeDetail anime = null;
+		if (id != null) {
+			anime = annRetriever.retrieveData(
+					getUrlWithParamForAnimeDetail(id), AnimeDetail.class);
+		}
+		return anime;
 	}
 
 	@Cacheable(value = "getAnimeDetail", key = "#name")
 	public AnimeList getAnimeListByName(final String name) {
-		// Retrieve list of anime by name with full detail
-		final AnimeDetail animeDetail = annRetriever.retrieveData(
-				getUrlWithParamForAnimeListByName(name), AnimeDetail.class);
-		// Convert into AnimeList
-		final AnimeList animeList = AnimeListMapper
-				.mapFromAnimeDetail(animeDetail);
-
+		AnimeList animeList = null;
+		if (StringUtils.isNotBlank(name)) {
+			// Retrieve list of anime by name with full detail
+			final AnimeDetail animeDetail = annRetriever.retrieveData(
+					getUrlWithParamForAnimeListByName(name), AnimeDetail.class);
+			// Convert into AnimeList
+			animeList = AnimeListMapper.mapFromAnimeDetail(animeDetail);
+		}
 		// return result
 		return animeList;
 	}

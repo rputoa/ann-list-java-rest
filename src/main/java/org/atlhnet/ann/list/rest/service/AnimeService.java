@@ -36,17 +36,19 @@ public class AnimeService {
 			// Retrieve animeDetail from Dao
 			animeDetail = animeDao.getAnimeDetail(id);
 
-			// Filter animecast List if it is not japanese
+			// Filter animecast List if it is not japanese.
+			// When we search anime by Id, animeDetail.getResume will only
+			// contains 1 entry (API Call restriction)
 			if (animeDetail != null && animeDetail.getResume() != null
 					&& animeDetail.getResume().get(0) != null
 					&& animeDetail.getResume().get(0).getCasts() != null) {
 				animeDetail
-						.getResume()
-						.get(0)
-						.setCasts(
-								getAnimeCastFilteredByLang(animeDetail
-										.getResume().get(0).getCasts(),
-										Langage.JA));
+				.getResume()
+				.get(0)
+				.setCasts(
+						getAnimeCastFilteredByLang(animeDetail
+								.getResume().get(0).getCasts(),
+								Langage.JA));
 			}
 		}
 
