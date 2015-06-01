@@ -15,9 +15,9 @@ optional param :
  - Integer limit : limit the number of result 
  - String name : search anime containing the word "name" in their title
 
- #### /anime/id ####
- Return the detail of the anime whose id is "id"
-   Right now only the cast list is implemented
+#### /anime/id ####
+Return the detail of the anime whose id is "id"
+Right now only the cast list is implemented
    
 ## Framework used ##
  - Spring Framework (IoC, Rest)
