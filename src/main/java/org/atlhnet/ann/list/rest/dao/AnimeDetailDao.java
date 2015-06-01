@@ -1,44 +1,53 @@
 package org.atlhnet.ann.list.rest.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.commons.lang3.StringUtils;
-import org.atlhnet.ann.list.rest.domain.AnimeDetail;
-import org.atlhnet.ann.list.rest.domain.AnimeList;
-import org.atlhnet.ann.list.rest.domain.mapper.AnimeListMapper;
+import org.atlhnet.ann.list.rest.dao.domain.detail.DaoAnimeDetailReport;
+import org.atlhnet.ann.list.rest.dao.mapper.AnimeDetailMapper;
+import org.atlhnet.ann.list.rest.domain.Anime;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
 @Component
 public class AnimeDetailDao {
 
-	private final static String ANN_LIST_DETAIL = "http://www.animenewsnetwork.com/encyclopedia/api.xml?anime=";
+	@Value("${ann.ws.rest.anime.detail.url.core}")
+	private String ANN_LIST_DETAIL;
 
 	@Autowired
-	private ANNRetriever annRetriever;
+	private AnimeNewsNetworkDao animeNewsNetworkDao;
 
 	@Cacheable(value = "getAnimeDetail", key = "#id")
-	public AnimeDetail getAnimeDetail(final Long id) {
-		slowQuery(5000L);
-		AnimeDetail anime = null;
+	public Anime findAnimeDetail(final Long id) {
+		Anime anime = null;
 		if (id != null) {
-			anime = annRetriever.retrieveData(
-					getUrlWithParamForAnimeDetail(id), AnimeDetail.class);
+			final DaoAnimeDetailReport animeDetailReport = animeNewsNetworkDao
+					.retrieveData(getUrlWithParamForAnimeDetail(id),
+							DaoAnimeDetailReport.class);
+
+			anime = AnimeDetailMapper.toAnime(animeDetailReport);
 		}
 		return anime;
 	}
 
 	@Cacheable(value = "getAnimeDetail", key = "#name")
-	public AnimeList getAnimeListByName(final String name) {
-		AnimeList animeList = null;
+	public List<Anime> findAnimeListByName(final String name) {
+		List<Anime> animes = new ArrayList<Anime>();
+
 		if (StringUtils.isNotBlank(name)) {
 			// Retrieve list of anime by name with full detail
-			final AnimeDetail animeDetail = annRetriever.retrieveData(
-					getUrlWithParamForAnimeListByName(name), AnimeDetail.class);
+			final DaoAnimeDetailReport animeDetailReport = animeNewsNetworkDao
+					.retrieveData(getUrlWithParamForAnimeListByName(name),
+							DaoAnimeDetailReport.class);
 			// Convert into AnimeList
-			animeList = AnimeListMapper.mapFromAnimeDetail(animeDetail);
+			animes = AnimeDetailMapper.toAnimes(animeDetailReport);
 		}
 		// return result
-		return animeList;
+		return animes;
 	}
 
 	/**
@@ -76,13 +85,4 @@ public class AnimeDetailDao {
 		}
 		return urlWithParam.toString();
 	}
-
-	private void slowQuery(final long seconds) {
-		try {
-			Thread.sleep(seconds);
-		} catch (final InterruptedException e) {
-			throw new IllegalStateException(e);
-		}
-	}
-
 }

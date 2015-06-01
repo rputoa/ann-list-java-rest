@@ -1,28 +1,41 @@
 package org.atlhnet.ann.list.rest.dao;
 
+import java.util.List;
+
 import org.apache.commons.lang3.StringUtils;
-import org.atlhnet.ann.list.rest.domain.AnimeList;
+import org.atlhnet.ann.list.rest.dao.domain.list.DaoAnimeList;
+import org.atlhnet.ann.list.rest.dao.mapper.AnimeListMapper;
+import org.atlhnet.ann.list.rest.domain.Anime;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 public class AnimeListDao {
 
+	// TODO Externalisze into .properties
+	@Value("${ann.ws.rest.anime.list.url.core}")
 	private final static String ANN_LIST_REPORT = "http://www.animenewsnetwork.com/encyclopedia/reports.xml?id=155&type=anime";
+	@Value("${ann.ws.rest.anime.list.url.start}")
 	private final static String URL_START_PARAM = "&nskip=";
+	@Value("${ann.ws.rest.anime.list.url.limit}")
 	private final static String URL_LIMIT_PARAM = "&nlist=";
+	@Value("${ann.ws.rest.anime.list.url.name}")
 	private final static String URL_NAME_PARAM = "&name=";
 
 	@Autowired
-	private ANNRetriever annRetriever;
+	private AnimeNewsNetworkDao animeDaoSping;
 
 	/** Retrieve list of anime from the retriever */
-	public AnimeList getList(final Integer start, final Integer limit,
+	public List<Anime> findList(final Integer start, final Integer limit,
 			final String name) {
 
-		return annRetriever.retrieveData(
+		final DaoAnimeList animeList = animeDaoSping.retrieveData(
 				getUrlWithParamForAnimeList(start, limit, name),
-				AnimeList.class);
+				DaoAnimeList.class);
+		final List<Anime> animes = AnimeListMapper.toAnimes(animeList);
+
+		return animes;
 	}
 
 	/**
