@@ -18,6 +18,10 @@ optional param :
 #### /anime/id ####
 Return the detail of the anime whose id is "id"
 Right now only the cast list is implemented
+
+## Getting started ##
+This application use an embedded Tomcat. 
+Just run "mvn spring-boot:run" and you will have a server running on localhost:8080.
    
 ## Framework used ##
  - Spring Framework (IoC, Rest)
@@ -26,3 +30,9 @@ Right now only the cast list is implemented
  - Testing : 
    - Mockito
    - JUnit
+   
+## To Do ##
+ - Merging ann-list-rest and ann-list project : The goal is to serve the angular application with the Rest Service.
+ - Securing the service with Spring Security
+ - Adding persistence with RDBS or Mongo
+ - Implementing user-centric functionnalities (such as list of favorites)
