@@ -8,10 +8,21 @@ It resolve the problem of "Cross-Origin XMLHttpRequest" that is not allowed by t
 We will try to implement functionnalities not permitted by the API, for example listing animes containing "xxx" in their name (the API only allow listing animes starting with "xxx").
 
 ## Implemented method ##
-### /list ###
+#### /list ####
 Return a list of anime from the API.
-
 optional param : 
  - Integer start : 
  - Integer limit : limit the number of result 
  - String name : search anime containing the word "name" in their title
+
+ #### /anime/id ####
+ Return the detail of the anime whose id is "id"
+   Right now only the cast list is implemented
+   
+## Framework used ##
+ - Spring Framework (IoC, Rest)
+ - Spring Boot
+ - EhCache
+ - Testing : 
+   - Mockito
+   - JUnit
