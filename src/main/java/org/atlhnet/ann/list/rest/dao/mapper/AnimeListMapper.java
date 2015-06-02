@@ -51,7 +51,7 @@ public class AnimeListMapper {
 			anime.setName(animeListItem.getName());
 			anime.setPrecision(animeListItem.getPrecision());
 			anime.setDate(animeListItem.getVintage());
-			anime.setType(AnimeType.valueOf(animeListItem.getType()));
+			anime.setType(AnimeType.convert(animeListItem.getType()));
 		}
 		return anime;
 	}

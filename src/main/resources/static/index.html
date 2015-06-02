@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  <title>Anime Listing powered by Anime News Network</title> 
+  <!-- Material CSS -->
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+  <link rel="stylesheet" href="./resources/bower_components/angular-material/angular-material.css"/> 
+  <link rel="stylesheet" href="./resources/bower_components/angular-material-table/dist/md-table.css"/>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./resources/css/layout.css"/>
+  <link rel="stylesheet" href="./resources/css/margin.css"/>
+  <link rel="stylesheet" href="./resources/css/app.css"/>
+</head>
+
+<body ng-app="app" layout="column" layout-margin>
+  <!-- Navigation bar -->
+  <header ng-include='"./src/template/navigation.html"' flex="10"></header>
+ 
+  <!-- Main content, changes based on $route --> 
+  <section ui-view layout="column" layout-margin></section>    
+  <!-- Footer -->
+  <footer ng-include='"./src/template/footer.html"' flex="10" layout="row"></footer>
+
+  <!-- Bootstrap --> 
+  <!-- XML to JSON Converter -->
+  <script src="./resources/bower_components/x2js/xml2json.min.js"></script>
+
+  <!--Angular JS -->
+  <script src="./resources/bower_components/angular/angular.js"></script>
+  <!-- Angular Material Design -->
+   <script src="./resources/bower_components/angular-aria/angular-aria.js"></script>
+   <script src="./resources/bower_components/angular-animate/angular-animate.js"></script>
+   <script src="./resources/bower_components/angular-material/angular-material.js"></script>
+   <script src="./resources/bower_components/angular-material-table/dist/md-table.js"></script>
+  <!-- Ui-router -->
+  <script src="./resources/bower_components/ui-router/release/angular-ui-router.js"></script>
+   
+  <!-- Custom Javascript -->
+  <!-- Model -->
+  <script type="text/javascript" src="./src/common/model.js"></script>
+  <!-- animeList Module -->  
+  <script type="text/javascript" src="./src/animeList/animeList.js"></script>
+  <script type="text/javascript" src="./src/animeList/animeListService.js"></script>
+  <script type="text/javascript" src="./src/animeList/animeListController.js"></script>
+
+  <!-- animeList Module -->  
+  <script type="text/javascript" src="./src/animeDetail/animeDetail.js"></script>
+  <script type="text/javascript" src="./src/animeDetail/animeDetailController.js"></script>
+
+  <!-- App Module -->
+  <script type="text/javascript" src="./src/app-modules.js"></script>
+  <script type="text/javascript" src="./src/app-routes.js"></script>
+ 
+</body>
+</html>
