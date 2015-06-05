@@ -15,17 +15,18 @@ public class SecurityConf extends WebSecurityConfigurerAdapter {
 	public void configureGlobal(final AuthenticationManagerBuilder auth)
 			throws Exception {
 		auth.inMemoryAuthentication().withUser("rputoa").password("test")
-		.roles("ADMIN");
+				.roles("ADMIN");
 		auth.inMemoryAuthentication().withUser("user").password("test")
-		.roles("USER");
+				.roles("USER");
 	}
 
 	@Override
 	protected void configure(final HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-				.antMatchers("/resources/**", "/src/**", "/#/**").permitAll()
-				.anyRequest().authenticated().and().formLogin().and()
-				.httpBasic();
+		// .antMatchers("/resources/**", "/src/**", "/#/**").permitAll()
+		// .anyRequest().authenticated().and().formLogin().and()
+		// .httpBasic();
+				.anyRequest().permitAll();
 	}
 
 }
